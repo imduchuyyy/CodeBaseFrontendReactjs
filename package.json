@@ -10,7 +10,9 @@
     "start": "npm run start:webpack",
     "webpack": "webpack-dev-server --config webpack.dev.js --mode development",
     "build": "npm run build:webpack",
-    "test": "jest -i --verbose --colors"
+    "eslint-fix": "eslint ./src --fix --quiet",
+    "test": "jest -i --verbose --colors",
+    "prebuild": "npm run eslint-fix"
   },
   "author": "Bui Duc Huy",
   "license": "ISC",
@@ -62,6 +64,7 @@
     "node-sass": "^4.13.1",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss-loader": "^3.0.0",
+    "prettier": "^2.0.2",
     "react-beautiful-dnd": "^13.0.0",
     "react-hot-loader": "^4.12.19",
     "sass-loader": "^8.0.2",
