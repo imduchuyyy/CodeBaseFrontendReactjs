@@ -127,6 +127,10 @@ module.exports = {
     }),
     new WebpackBar(),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, 'public/index.html'),
+      inject: true
+    }),
   ],
   optimization: {
     moduleIds: 'hashed',
@@ -179,26 +183,27 @@ module.exports = {
   },
   devServer: {
     compress: true,
-    contentBase: path.resolve(__dirname, "./public"),
+    contentBase: path.resolve(__dirname, "dist"),
     // disableHostCheck: true, // THIS IS NOT RECOMMENDED,
     // lazy: true,
-    filename: 'bundle.js',
-    headers: {
-      'X-Custom-Foo': 'bar',
-    },
+    // filename: 'bundle.js',
+    // headers: {
+    //   'X-Custom-Foo': 'bar',
+    // },
     historyApiFallback: {
       disableDotRule: true,
     },
-    host: '0.0.0.0',
-    hot: true,
-    index: './public/index.html',
-    liveReload: false,
-    onListening(server) {
-      const { port } = server.listeningApp.address()
-      // eslint-disable-next-line no-console
-      console.log('🚀 Listening on port:', port)
-    },
-    // open: true, // 'Google Chrome'
+    // host: '0.0.0.0',
+    // hot: true,
+    // index: './public/index.html',
+    // liveReload: false,
+    // onListening(server) {
+    //   const { port } = server.listeningApp.address()
+    //   console.log(server.listeningApp.address())
+    //   // eslint-disable-next-line no-console
+    //   // console.log('🚀 Listening on port:', port)
+    // },
+    // // open: true, // 'Google Chrome'
     port: process.env.PORT || 3000,
     stats: {
       colors: true,
@@ -215,6 +220,6 @@ module.exports = {
       ignored: /node_modules/,
       poll: true,
     },
-    writeToDisk: true,
+    // writeToDisk: true,
   },
 }
