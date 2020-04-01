@@ -23,7 +23,7 @@ try {
   console.log(DecodeError(e))
 })
 ```
-3. Using hoock
+3. Using hook
 ```javascript
 import { withQuery, withMutation, withApollo } from '@utils'
 
