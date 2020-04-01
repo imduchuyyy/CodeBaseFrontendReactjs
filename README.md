@@ -130,34 +130,9 @@ import { ... } from '@pages'
 import { ... } from '@tools'
 import { ... } from '@utils'
 ```
-5. Sử dụng cú pháp Optional Chaining
-    - Đối với các object cần kiểm tra nó khác null hoặc undefied thì mới có thể lấy giá trị, ta làm theo cách sau.
-```javascript
-// Cách thường làm
-if (!!a) {
-  if (!!a.b) {
-    if (!!a.b.c) {
-      a.b.c()
-    }
-  }
-}
-// Hoặc như này
-if (!!a && !!a.b && !!a.b.c) {
-  a.b.c()
-}
-
-// Cách mà codebase mới cho phép các bạn code như này
-a?.b?.c()
-```
-6. Hỗ trợ Dynamic Import
+5. Support Dynamic Import
 ```javascript
 import('@pages/login').then(({ default: Component }) => {
   return <Component />
 })
 ```
-
-## Chú ý:
-- Khi muốn thay đổi rules của Eslint các bạn nên liên hệ ```TeamLeader```.
-- Các component dùng chung nên để vào thư mục ```components```.
-- Các page được chia theo route nên để vào thư mục ```pages```.
-- Sử dụng các hook, vui lòng sử dụng thông qua thư viện ```react-use```.
