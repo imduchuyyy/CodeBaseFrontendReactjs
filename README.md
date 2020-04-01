@@ -1,5 +1,4 @@
-# Code Base Front-end using React, React-route-dom, Graphql, Apollo, etc...
-
+# Code Base Front-end React
 ## Setting:
 1. Connect to Bankend
     - Setting in 2 file ```.env.development.local``` and ```.env.production.local```
