@@ -1,23 +1,20 @@
 # Webpack source tree
 
-## Cài đặt:
-1. Kết nối Bankend
-    - Cài đặt trong 2 file ```.env.development.local``` và ```.env.production.local```
-2. Cài đặt router
-    - Cài đặt trong ```src/configs/routers/index.js```
-3. Cài đặt Provider
-    - Cài đặt trong ```src/utils/provider/index.js```
-4. Cài đặt microservice
-    - Cài đặt trong ```src/utils/provider/index.js```, thêm props ```basename='/appName'``` vào component ```BrowserRouter```
-   - Cài đặt trong ```config/default.config.js```, chỉnh sửa biến ```staticPath``` thành ```staticPath = 'appName/static'```
+## Setting:
+1. Connect to Bankend
+    - Setting in 2 file ```.env.development.local``` and ```.env.production.local```
+2. Setting router
+    - Setting in ```src/configs/routers/index.js```
+3. Setting Provider
+    - Setting in ```src/utils/provider/index.js```
 
-## Sử dụng:
-1. Lệnh chạy cơ bản
+## Useage:
+1. Running with command:
     - Start
-    > PORT=12345 yarn start
+    > npm start
     - Build
-    > yarn build
-2. Bắt lỗi phía Backend trả về
+    > npm build
+2. Catching error from backend
 ```javascript
 import { DecodeError } from '@utils'
 
@@ -27,7 +24,7 @@ try {
   console.log(DecodeError(e))
 })
 ```
-3. Sử dụng các HOC để truy vấn backend
+3. Using hoock
 ```javascript
 import { withQuery, withMutation, withApollo } from '@utils'
 
@@ -124,7 +121,7 @@ const App = ({
   )
 }
 ```
-4. Sử dụng alias
+4. Using alias
     - Đối với các thư mục cấp 0 từ ```src```, vui lòng tạo file ```index.js``` để ```export``` các component ở trong thư mục cấp 0 đó.
     - Sau khi ```export``` các bạn có thể ```import``` theo cách sau.
 ```javascript
