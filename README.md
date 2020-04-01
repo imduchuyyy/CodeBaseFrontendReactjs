@@ -1,6 +1,6 @@
 # Code Base Front-end React, Webpack, Babel, Eslint
 ## Setting:
-1. Connect to Bankend
+1. Connect to Backend
     - Setting in 2 file ```.env.development.local``` and ```.env.production.local```
 2. Setting router
     - Setting in ```src/configs/routers/index.js```
