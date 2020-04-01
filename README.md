@@ -1,4 +1,4 @@
-# Webpack source tree
+# Code Base Front-end using React, React-route-dom, Graphql, Apollo, etc...
 
 ## Setting:
 1. Connect to Bankend
@@ -8,7 +8,7 @@
 3. Setting Provider
     - Setting in ```src/utils/provider/index.js```
 
-## Useage:
+## Usage:
 1. Running with command:
     - Start
     > npm start
