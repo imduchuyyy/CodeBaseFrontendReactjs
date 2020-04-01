@@ -1,4 +1,4 @@
-# Code Base Front-end React
+# Code Base Front-end React, Webpack, Babel, Eslint
 ## Setting:
 1. Connect to Bankend
     - Setting in 2 file ```.env.development.local``` and ```.env.production.local```
