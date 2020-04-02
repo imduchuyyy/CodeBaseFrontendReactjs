@@ -6,13 +6,11 @@
   "scripts": {
     "start:webpack": "webpack-dev-server --mode development",
     "build:analyzer": "NODE_ENV=production NODE_TYPE=analyzer webpack",
-    "build:webpack": "NODE_ENV=production webpack",
+    "build:webpack": "webpack",
     "start": "npm run start:webpack",
-    "webpack": "webpack-dev-server --config webpack.dev.js --mode development",
     "build": "npm run build:webpack",
     "eslint-fix": "eslint ./src --fix --quiet",
-    "test": "jest -i --verbose --colors",
-    "prebuild": "npm run eslint-fix"
+    "test": "jest -i --verbose --colors"
   },
   "author": "Bui Duc Huy",
   "license": "ISC",
@@ -80,6 +78,7 @@
   },
   "dependencies": {
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.1.2"
   }
 }

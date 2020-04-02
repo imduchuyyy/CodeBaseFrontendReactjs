@@ -13,7 +13,6 @@ const WebpackBar = require('webpackbar')
 const Dotenv = require('dotenv-webpack')
 
 const isDev = true
-
 const staticPath = 'static'
 
 const threadLoader = {
@@ -34,6 +33,48 @@ const alias = {
   '@constants': path.resolve(__dirname, './src/constants')
 }
 
+const postcssLoader = {
+  loader: 'postcss-loader',
+  options: {
+    ident: 'postcss',
+    plugins: [require('autoprefixer')]
+  }
+}
+
+const pluginsOfProc = [
+  new MiniCssExtractPlugin({
+    filename: `${staticPath}/css/[hash].css`,
+    chunkFilename: `${staticPath}/css/chunk/[contenthash].chunk.css`,
+    ignoreOrder: false
+  }),
+  new OptimizeCSSAssetsPlugin({
+    cssProcessor: cssnano,
+    cssProcessorOptions: {
+      discardComments: {
+        removeAll: true
+      }
+    }
+  }),
+  new AutoDllPlugin({
+    inject: true,
+    filename: '[hash].dll.js',
+    debug:true,
+    path: `${staticPath}/dll`,
+    // entry: {
+    //   vendor: [
+    //     'react',
+    //     'react-dom',
+    //     'react-router-dom'
+    //   ]
+    // },
+    plugins: [
+      new webpack.optimize.MinChunkSizePlugin({
+        minChunkSize: 512
+      })
+    ]
+  }),
+]
+
 module.exports = {
   resolve: {
     modules: [
@@ -51,11 +92,63 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: 'bundle.js',
-    chunkFilename: `${staticPath}/js/[contenthash].chunk.js`,
+    chunkFilename: `${staticPath}/js/chunk/[contenthash].chunk.js`,
     publicPath: '/'
   },
   module: {
     rules: [
+      {
+        oneOf: [
+          {
+            test: /\.css$/,
+            sideEffects: true,
+            use: [
+              {
+                loader: isDev ? 'style-loader' : MiniCssExtractPlugin.loader
+              },
+              {
+                loader: 'css-loader'
+              },
+              { ...postcssLoader },
+              { ...threadLoader }
+            ]
+          },
+          {
+            test: /\.(scss|sass)$/,
+            sideEffects: true,
+            use: [
+              {
+                loader: isDev ? 'style-loader' : MiniCssExtractPlugin.loader
+              },
+              { loader: 'css-loader' },
+              { ...postcssLoader },
+              { loader: 'sass-loader' },
+              { ...threadLoader }
+            ]
+          },
+          {
+            test: /\.less$/,
+            sideEffects: true,
+            use: [
+              {
+                loader: isDev ? 'style-loader' : MiniCssExtractPlugin.loader
+              },
+              { loader: 'css-loader' },
+              { ...postcssLoader },
+              {
+                loader: 'less-loader',
+                options: {
+                  javascriptEnabled: true,
+                  modifyVars: {
+                    '@font-family': `'Nunito Sans', sans-serif`
+                  }
+                }
+              },
+              { ...threadLoader }
+            ]
+          }
+        ]
+      },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
@@ -126,6 +219,7 @@ module.exports = {
     new webpack.optimize.MinChunkSizePlugin({
       minChunkSize: 512
     }),
+    ...(isDev ? [new webpack.HotModuleReplacementPlugin()] : pluginsOfProc),
     new WebpackBar(),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new HtmlWebpackPlugin({
@@ -133,10 +227,6 @@ module.exports = {
       inject: true
     }),
   ],
-  optimization: {
-    moduleIds: 'hashed',
-    runtimeChunk: 'single',
-  },
   optimization: {
     moduleIds: 'hashed',
     runtimeChunk: 'single',
