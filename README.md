@@ -10,9 +10,9 @@
 ## Usage:
 1. Running with command:
     - Start
-    > npm start
+    > npm run start
     - Build
-    > npm build
+    > npm run build
 2. Catching error from backend
 ```javascript
 import { DecodeError } from '@utils'
@@ -136,3 +136,6 @@ import('@pages/login').then(({ default: Component }) => {
   return <Component />
 })
 ```
+
+6. Support I18next
+    - Edit file ```i18n``` in folder ```config``` to translate
