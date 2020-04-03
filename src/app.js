@@ -3,10 +3,10 @@ import { hot } from 'react-hot-loader'
 import { AppRouter } from '@pages'
 import { AppProvider } from '@utils'
 
-function App(props) {
+function App() {
   return (
     <AppProvider>
-      <AppRouter/>
+      <AppRouter />
     </AppProvider>
   )
 }

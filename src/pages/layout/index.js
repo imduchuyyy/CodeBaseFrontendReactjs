@@ -1,3 +1,4 @@
+// eslint-disable
 import React, { useContext } from 'react'
 import { CommonContext } from '@tools'
 
@@ -7,7 +8,7 @@ function Layout(props) {
 
   function onHandleChangeLanguage(e) {
     const { value } = e.target
-    dispatch({ type: "changeLanguage", payload: value})
+    dispatch({ type: "changeLanguage", payload: value })
   }
 
   function onChangeRoute(value) {

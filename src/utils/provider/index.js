@@ -6,10 +6,10 @@ import { I18nextProvider } from 'react-i18next'
 import { BrowserRouter } from 'react-router-dom'
 
 import { i18nResources } from '@configs'
-import { CommonContext } from '@tools'
-import { Client } from '@tools'
+import { CommonContext, Client } from '@tools'
 
-function commonReducer(state, action){
+
+function commonReducer(state, action) {
   switch (action.type) {
     case 'login': {
       localStorage.setItem('token', action.payload)

@@ -10,44 +10,38 @@ function Routers(props) {
   return (
     <Suspense fallback={null}>
       <Switch>
-        {routes &&
-          routes.map(route =>
-            route.private ? (
+        {routes
+          && routes.map(route => (route.private ? (
               // Private
-              <Route
-                key={route.label}
-                {...route}
-                component={props1 => {
-                  const Component = React.lazy(() =>
-                    import(`./${route.component}`)
-                  )
+            <Route
+              key={route.label}
+              {...route}
+              component={props1 => {
+                  const Component = React.lazy(() => import(`./${route.component}`))
                   return isAuth ? (
                     <Layout {...props1} {...props}>
                       <Component {...props1} {...props} />
                     </Layout>
                   ) : (
-                      <Redirect to="/login" />
+                    <Redirect to="/login" />
                     )
                 }}
-              />
+            />
             ) : (
                 // public
-                <Route
-                  key={route.label}
-                  {...route}
-                  component={props1 => {
-                    const Component = React.lazy(() =>
-                      import(`./${route.component}`)
-                    )
+              <Route
+                key={route.label}
+                {...route}
+                component={props1 => {
+                    const Component = React.lazy(() => import(`./${route.component}`))
                     return !isAuth ? (
                       <Component {...props1} {...props} />
                     ) : (
-                        <Redirect to="/" />
+                      <Redirect to="/" />
                       )
                   }}
-                />
-              )
-          )}
+              />
+              )))}
         <Route render={() => <p>404</p>} />
       </Switch>
     </Suspense>

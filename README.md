@@ -44,3 +44,5 @@ import('@pages/login').then(({ default: Component }) => {
 6. Support Code-splitting 
     - Edit file ```index``` in folder ```config/routes``` to add route
 7. Support Apollo, Graphql
+8. Support eslint 
+    - delete ```src/``` in file ```.eslintignore``` and add script ```"prestart": "npm run eslint-fix"``` to use

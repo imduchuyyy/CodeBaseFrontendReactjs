@@ -26,7 +26,8 @@ function Login(props) {
     <div style={{
       margin: 10,
       padding: 10
-    }}>
+    }}
+    >
       <p>{t('loginPage.login')} (username = 123, password = 123)</p>
       <input onChange={(value) => onChangeInput('username', value)} placeholder="username" />
       <br />
@@ -34,7 +35,7 @@ function Login(props) {
       <input onChange={(value) => onChangeInput('password', value)} placeholder="password" type="password" />
       <br />
       <br />
-      <button onClick={onHandleLogin} >{t('loginPage.login')} </button>
+      <button onClick={onHandleLogin}>{t('loginPage.login')}</button>
       <br />
       <br />
       <p onClick={() => history.push('/register')}>{t('registerPage.register')}</p>

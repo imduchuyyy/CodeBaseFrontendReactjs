@@ -1,28 +1,28 @@
 export const routes = [
   {
-		label: 'Login',
+    label: 'Login',
     path: '/login',
     exact: true,
-		component: 'login'
+    component: 'login'
   },
   {
-		label: 'Register',
+    label: 'Register',
     path: '/register',
     exact: true,
-		component: 'register'
-	},
-	{
-		label: 'home',
-		path: '/',
-    private: true,
-    exact: true,
-		component: 'home',
+    component: 'register'
   },
   {
-		label: 'role',
+    label: 'home',
+    path: '/',
+    private: true,
+    exact: true,
+    component: 'home',
+  },
+  {
+    label: 'role',
     path: '/role',
-    exact:true,
-		private: true,
-		component: 'role',
+    exact: true,
+    private: true,
+    component: 'role',
   },
 ]

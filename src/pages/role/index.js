@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Role(props){
+function Role(props) {
   return "role"
 }
 
