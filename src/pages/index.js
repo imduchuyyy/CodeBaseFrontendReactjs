@@ -4,11 +4,12 @@ import { routes } from '@configs'
 import { CommonContext } from '@tools'
 import { withTranslation } from 'react-i18next'
 import Layout from '@pages/layout'
+import { Loading } from '@components'
 
 function Routers(props) {
   const { isAuth } = useContext(CommonContext)
   return (
-    <Suspense fallback={null}>
+    <Suspense fallback={<Loading></Loading>}>
       <Switch>
         {routes
           && routes.map(route => (route.private ? (
