@@ -1,9 +1,14 @@
 import React from 'react'
 import { hot } from 'react-hot-loader'
-import Pages from '@pages'
+import { AppRouter } from '@pages'
+import { AppProvider } from '@utils'
 
 function App(props) {
-  return <Pages />
+  return (
+    <AppProvider>
+      <AppRouter/>
+    </AppProvider>
+  )
 }
 
 export default hot(module)(App)

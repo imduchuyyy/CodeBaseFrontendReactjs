@@ -1,21 +1,28 @@
-export const routersNotAuth = [
+export const routes = [
   {
-    exact: true,
+		label: 'Login',
     path: '/login',
-    component: 'login'
-  }
-]
-export const routersAuth = [
-  {
     exact: true,
-    path: '/home',
-    component: 'home',
-    root: true
+		component: 'login'
   },
   {
+		label: 'Register',
+    path: '/register',
     exact: true,
+		component: 'register'
+	},
+	{
+		label: 'home',
+		path: '/',
+    private: true,
+    exact: true,
+		component: 'home',
+  },
+  {
+		label: 'role',
     path: '/role',
-    component: 'role',
-    name: 'Phân quyền'
-  }
+    exact:true,
+		private: true,
+		component: 'role',
+  },
 ]

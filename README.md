@@ -137,5 +137,5 @@ import('@pages/login').then(({ default: Component }) => {
 })
 ```
 
-6. Support I18next
+6. Support i18next
     - Edit file ```i18n``` in folder ```config``` to translate
