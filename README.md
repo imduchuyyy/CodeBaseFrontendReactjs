@@ -1,4 +1,4 @@
-# Code Base Front-end React, Webpack, Babel, Eslint
+# Code Base Front-end React, Webpack, Babel, Eslint using with Graphql
 ## Setting:
 1. Connect to Backend
     - Setting in 2 file ```.env.development.local``` and ```.env.production.local```
@@ -41,8 +41,5 @@ import('@pages/login').then(({ default: Component }) => {
 ```
 5. Support i18next
     - Edit file ```index``` in folder ```config/i18n``` to translate
-6. Support Code-splitting 
-    - Edit file ```index``` in folder ```config/routes``` to add route
-7. Support Apollo, Graphql
-8. Support eslint 
-    - delete ```src/``` in file ```.eslintignore``` and add script ```"prestart": "npm run eslint-fix"``` to use
+6. Support eslint 
+    - delete ```src/``` in file ```.eslintignore``` and add script ```"prestart": "npm run eslint-fix"``` into file ```package.json``` to use
